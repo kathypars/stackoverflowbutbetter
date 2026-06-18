@@ -27,7 +27,20 @@ const app = express();
 dotenv.config();
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://stackoverflowbutbetter.vercel.app",
+];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 app.get("/", (req, res) => {
   res.send("Stackoverflow clone is running perfect");
 });
