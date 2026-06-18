@@ -236,11 +236,11 @@ const SocialPage = () => {
                   {p.caption && <p className="mb-3 whitespace-pre-wrap text-sm text-gray-800">{p.caption}</p>}
                   
                   {p.mediaType === 'image' && p.mediaUrl && (
-                    <img src={`${process.env.NEXT_PUBLIC_API_URL}${p.mediaUrl}`} alt="Post media" className="w-full rounded-md max-h-96 object-cover" />
+                    <img src={p.mediaUrl} alt="Post media" className="w-full rounded-md max-h-96 object-cover" />
                   )}
                   
                   {p.mediaType === 'video' && p.mediaUrl && (
-                    <video src={`${process.env.NEXT_PUBLIC_API_URL}${p.mediaUrl}`} controls className="w-full rounded-md max-h-96 bg-black" />
+                    <video src={p.mediaUrl} controls className="w-full rounded-md max-h-96 bg-black" />
                   )}
 
                   {p.mediaType === 'youtube' && p.youtubeUrl && (
